@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIFPER</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            background-image: url('Sekolahsmpn4.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 300px; 
+        }
+        .logo {
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            background-color: #eaeaea;
+            margin: 0 auto 20px; 
+            background-image: url('Smpn4tangsel.png'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left; 
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; 
+            position: relative; 
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .login-button {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        .login-button:hover {
+            background-color: rgb(241, 189, 0);
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px; 
+            right: 15px; 
+            font-size: 12px;
+            color: rgb(255, 255, 255);
+        }
+        .password-container {
+            position: relative; 
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 24px; 
+            height: 24px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>WELCOME</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Masukkan Username">
+        
+        <label for="password">Password:</label>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Masukkan Password">
+            <img class="toggle-password" src="closed-eye.png" alt="Show Password" onclick="togglePassword()">
+        </div>
+        
+        <div class="button-container">
+            <button class="login-button" onclick="window.location.href='dashboardadm.html'">Login</button>
+        </div>
+    </div>
+    <div class="footer">Made by: Dila Kartika Putri, Ris Naia Natasya, Zesi Yaqumi</div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.src = 'open-eye.png';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.src = 'closed-eye.png'; 
+            }
+        }
+    </script>
+</body>
+</html>

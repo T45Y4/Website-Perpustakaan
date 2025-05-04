@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIFPER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-image: url('Sekolahsmpn4.jpg'); 
+            background-size: cover;
+            background-position: center;
+            flex-direction: column; 
+        }
+        .sidebar {
+            width: 160px;
+            background-color: rgba(244, 244, 244, 0.9);
+            padding: 20px;
+            height: 100vh;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            left: -200px; 
+            transition: left 0.3s, opacity 0.3s;
+            opacity: 0.9; 
+        }
+        .sidebar.open {
+            left: 0; 
+            opacity: 1; 
+        }
+        .hamburger {
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: 3px;
+            left: 0px;
+            z-index: 1000;
+            font-size: 30px;
+            transition: transform 0.3s;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar h4 {
+            background: linear-gradient(90deg, #003366, #f1bd00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 30px;
+            margin: 10px 0;
+        }
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            border-radius: 6px;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        .sidebar a:hover {
+            background-color: rgba(241, 189, 0, 0.7);
+        }
+        .icon {
+            width: 20px; 
+            margin-right: 10px; 
+        }
+        .logout {
+            display: flex;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .logout a {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: rgb(255, 255, 255);
+            padding: 10px 50px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .logout a:hover {
+            background-color: rgba(241, 189, 0, 1);
+        }
+        .content {
+            flex-grow: 1; 
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0px;
+            margin-left: 0; 
+            transition: margin-left 0.3s;
+            display: flex;
+            flex-direction: column; 
+            height: 100%; 
+            overflow: auto;
+        }
+        .content.shift {
+            margin-left: 200px; 
+        }
+        .header {
+            display: flex;
+            margin-top: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .header img.logo {
+            width: 50px;
+            height: auto;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .user-info img {
+            width: 40px;
+            height: auto;
+            border-radius: 50%;
+        }
+        .user-info span {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .totals {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            flex-wrap: wrap; 
+        }
+        .total-box {
+            background-color: rgba(241, 189, 0, 1);
+            padding: 10px;
+            border-radius: 30px;
+            text-align: center;
+            width: 30%;
+            min-width: 100px;
+            box-sizing: border-box; 
+        }
+        .total-box img {
+            width: 50px;
+            height: auto;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .footer {
+            position: relative; 
+            margin-top: auto;
+            right: 15px;
+            font-size: 12px;
+            color: white;
+            width: calc(100% - 0px); 
+            text-align: right; 
+            padding: 10px 0; 
+        }
+        .vision-mission {
+            margin-top: 20px;
+            font-size: 20px;
+            width: 100%; 
+        }
+        @media (max-width: 600px) {
+            .total-box {
+                width: 100%; 
+                margin-bottom: 10px; 
+            }
+            .footer {
+                position: relative; 
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hamburger" onclick="toggleSidebar()">
+        &#9776;
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <h2><img src="Smpn4tangsel.png" alt="Logo Sekolah" style="width: 150px; height: auto;"></h2>
+        <h4>SIFPER</h4>
+        <a href="dashboardadm.html"><img src="dashboard.png" class="icon" alt="Dashboard Icon">Dashboard</a>
+        <a href="Buku.html"><img src="Buku.png" class="icon" alt="Buku Icon">Buku</a>
+        <a href="Siswa.html"><img src="siswa.png" class="icon" alt="Siswa Icon">Siswa</a>
+        <a href="Peminjaman.html"><img src="pinjam.png" class="icon" alt="Peminjaman Icon">Peminjaman</a>
+        <a href="Pengembalian.html"><img src="pengembalian.png" class="icon" alt="Pengembalian Icon">Pengembalian</a>
+        <a href="Laporan.html"><img src="laporan.png" class="icon" alt="Laporan Icon">Laporan</a>
+        <div class="logout"><a href="Index.html">Logout</a></div>
+    </div>
+
+    <div class="content" id="content">
+        <div class="header">
+            <h2>Dashboard</h2>
+            <div class="user-info">
+                <img src="profile.png" alt="User Icon">
+                <span>Spongebob(Admin)</span> <!-- Replace with dynamic username -->
+            </div>
+        </div>
+
+        <div class="totals">
+            <div class="total-box">
+                <img src="siswa.png" alt="Total Siswa Icon">
+                <h3>Total Siswa</h3>
+                <p>31</p> 
+            </div>
+            <div class="total-box">
+                <img src="Buku.png" alt="Total Buku Icon">
+                <h3>Total Buku</h3>
+                <p>300</p> 
+            </div>
+            <div class="total-box">
+                <img src="pinjam.png" alt="Total Buku Pinjam Icon">
+                <h3>Total Buku Dipinjam</h3>
+                <p>50</p> 
+            </div>
+        </div>
+
+        <div class="vision-mission">
+            <h3>Visi:</h3>
+            <p>Menjadi organisasi siswa yang inovatif, berwawasan global, serta berkarakter unggul dalam membangun lingkungan sekolah yang harmonis, inspiratif, dan berdaya saing tinggi.</p>
+            <h3>Misi:</h3>
+            <ul>
+                <li><strong>Meningkatkan Jiwa Kepemimpinan</strong> - Membentuk siswa yang memiliki jiwa kepemimpinan yang bertanggung jawab, disiplin, dan berintegritas tinggi.</li>
+                <li><strong>Mendorong Kreativitas dan Inovasi</strong> - Menyediakan wadah bagi siswa untuk mengembangkan bakat, minat, dan inovasi di bidang akademik maupun non-akademik.</li>
+                <li><strong>Memperkuat Rasa Solidaritas dan Kepedulian Sosial</strong> - Mengadakan kegiatan sosial dan kemanusiaan yang membangun kepedulian terhadap sesama dan lingkungan.</li>
+                <li><strong>Mewujudkan Lingkungan Sekolah yang Nyaman dan Inklusif</strong> - Menciptakan atmosfer sekolah yang aman, nyaman, serta mendorong kolaborasi dan kebersamaan di antara siswa.</li>
+                <li><strong>Menanamkan Nilai-Nilai Moral dan Kebangsaan</strong> - Mengembangkan karakter siswa yang menjunjung tinggi nilai-nilai moral, budaya, dan kebangsaan untuk menjadi generasi yang berdaya saing global.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">Made by: Dila Kartika Putri, Ris Naia Natasya, Zesi Yaqumi</div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const hamburger = document.querySelector('.hamburger');
+
+            sidebar.classList.toggle('open');
+            content.classList.toggle('shift');
+            hamburger.classList.toggle('open'); // Toggle the open class for hamburger
+        }
+    </script>
+
+</body>
+</html>
